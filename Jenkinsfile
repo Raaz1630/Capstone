@@ -16,9 +16,7 @@ pipeline {
 
         stage('Stage-0 : Static Code Analysis Using SonarQube') { 
             steps {
-                withSonarQubeEnv('SonarQube') {
                     sh 'mvn clean verify sonar:sonar'
-                }
             }
         }
 
