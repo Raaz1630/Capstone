@@ -6,9 +6,6 @@ pipeline {
         jdk 'Java-17'
     }
 
-    environment {
-        // Define SonarQube server name configured in Jenkins
-        SONARQUBE_SERVER = 'sonarqube'
     }
 
     stages {
@@ -20,7 +17,7 @@ pipeline {
 
         stage('Stage-0 : Static Code Analysis Using SonarQube') {
             steps {
-                withSonarQubeEnv(SONARQUBE_SERVER) {
+                withSonarQubeEnv('SonarQube) {
                     sh 'mvn clean verify sonar:sonar'
                 }
             }
