@@ -6,12 +6,7 @@ tools {
         maven 'Maven'  // Use the exact name of the Maven installation
         jdk 'Java-17'  // Use the exact name of the JDK installation
     }
-
-    environment {
-        SONARQUBE_ENV = credentials('sonarqube-token')
-        ARTIFACTORY_CREDENTIALS = credentials('artifactory-credentials')
-        TOMCAT_CREDENTIALS = credentials('tomcat-credentials')
-    }
+   
 
     stages {
         stage('Checkout') { // Missing step to fetch code from GitHub
