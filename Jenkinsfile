@@ -14,12 +14,10 @@ tools {
                 git url: 'https://github.com/Raaz1630/Capstone_project.git', branch: 'main'
             }
         }
-
-        stage('Stage-0 : Static Code Analysis Using SonarQube') { 
-            steps {
-                withSonarQubeEnv('SonarQube') {
-                    sh 'mvn clean verify sonar:sonar'
-                }
+ 
+          stage('Stage-0 : Static Code Analysis Using SonarQube') { 
+           steps {
+                sh 'mvn clean verify sonar:sonar'
             }
         }
 
