@@ -19,11 +19,9 @@ pipeline {
 
    stage('Static Code Analysis Using SonarQube') {
             steps {
-                withSonarQubeEnv('SonarQube') { // Fixed missing quotation mark
                     sh 'mvn clean verify sonar:sonar'
             }
          }
-     }
         stage('Stage-1 : Clean') { 
             steps {
                 sh 'mvn clean'
