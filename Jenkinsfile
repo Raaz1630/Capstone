@@ -5,18 +5,23 @@ pipeline {
          maven 'Maven'
          jdk 'Java-17'
     }
-
+ environment {
+        // Define SonarQube server name configured in Jenkins
+        SONARQUBE_SERVER = 'SonarQube'
+    }
 
     stages {
-        stage('Checkout') { // Missing step to fetch code from GitHub
+        stage('Checkout') {
             steps {
                 git url: 'https://github.com/Raaz1630/Capstone_project.git', branch: 'main'
             }
         }
 
-        stage('Stage-0 : Static Code Analysis Using SonarQube') { 
+        stage('Stage-0 : Static Code Analysis Using SonarQube') {
             steps {
+                withSonarQubeEnv(SONARQUBE_SERVER) {
                     sh 'mvn clean verify sonar:sonar'
+                }
             }
         }
 
