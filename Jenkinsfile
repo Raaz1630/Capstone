@@ -2,10 +2,11 @@ pipeline {
     agent any 
 
     tools {
-         maven 'Maven'
-         jdk 'Java-17'
+        maven 'Maven'
+        jdk 'Java-17'
     }
- environment {
+
+    environment {
         // Define SonarQube server name configured in Jenkins
         SONARQUBE_SERVER = 'SonarQube'
     }
@@ -71,13 +72,16 @@ pipeline {
             steps {
                 script {
                     timeout(time: 1, unit: 'MINUTES') {
-                        waitForQualityGate abortPipeline: true
+                        def qg = waitForQualityGate()
+                        if (qg.status != 'OK') {
+                            error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                        }
                     }
                 }
             }
         }
 
-           stage('Stage-8 : Deploy an Artifact to Artifactory Manager i.e. Nexus/Jfrog') { 
+        stage('Stage-8 : Deploy an Artifact to Artifactory Manager i.e. Nexus/Jfrog') { 
             steps {
                 sh 'mvn deploy'
             }
@@ -88,7 +92,7 @@ pipeline {
                 script {
                     def warFile = findFiles(glob: 'target/*.war')[0].name
                     sh """
-                    curl -u admin:redhat@123  -T target/${warFile} "http://http://54.91.182.176:8080/manager/text/deploy?path=/inventory-app&update=true"
+                    curl -u admin:redhat@123 -T target/${warFile} "http://54.91.182.176:8080/manager/text/deploy?path=/inventory-app&update=true"
                     """
                 }
             }
@@ -96,11 +100,11 @@ pipeline {
 
         stage('Stage-10 : Smoke Test') { 
             steps {
-                sh 'curl --retry-delay 10 --retry 5 "http://http://54.91.182.176/:8080/cbapp"'
+                sh 'curl --retry-delay 10 --retry 5 "http://54.91.182.176:8080/cbapp"'
             }
         }
 
-        stage('AWS CloudWatch Setup') { // Missing CloudWatch setup
+        stage('AWS CloudWatch Setup') { // AWS CloudWatch setup
             steps {
                 sh '''
                 # Install and configure AWS CloudWatch agent
