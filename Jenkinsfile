@@ -5,7 +5,9 @@ pipeline {
         maven 'Maven'
         jdk 'Java-17'
     }
-
+     environment {
+        // Define SonarQube server name configured in Jenkins
+        SONARQUBE_SERVER = 'SonarQube' // Ensure this matches the SonarQube server name in Jenkins
     }
 
     stages {
@@ -15,14 +17,13 @@ pipeline {
             }
         }
 
-        stage('Stage-0 : Static Code Analysis Using SonarQube') {
+   stage('Static Code Analysis Using SonarQube') {
             steps {
-                withSonarQubeEnv('SonarQube) {
+                withSonarQubeEnv('SonarQube') { // Fixed missing quotation mark
                     sh 'mvn clean verify sonar:sonar'
-                }
             }
-        }
-
+         }
+     }
         stage('Stage-1 : Clean') { 
             steps {
                 sh 'mvn clean'
