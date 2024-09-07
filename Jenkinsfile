@@ -99,22 +99,7 @@ pipeline {
             }
         }
 
-        stage('AWS CloudWatch Verification') { // Verification of AWS CloudWatch setup
-            steps {
-                sh '''
-                # Check if CloudWatch agent is running
-                systemctl status amazon-cloudwatch-agent
-                
-                # List log groups
-                aws logs describe-log-groups --region us-east-1
-                
-                # List metrics
-                aws cloudwatch list-metrics --region us-east-1
-                '''
-            }
-        }
-    }
-
+    
     post {
         always {
             echo 'Cleaning up workspace'
