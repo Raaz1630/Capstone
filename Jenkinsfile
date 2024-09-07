@@ -106,15 +106,26 @@ pipeline {
 
         stage('AWS CloudWatch Setup') { 
             steps {
-                sh '''
-                # Install and configure AWS CloudWatch agent
-                sudo yum install -y amazon-cloudwatch-agent
-                sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config \
-                -m ec2 -c ssm:CloudWatchConfig -s
-                '''
+                script {
+                    // Check if CloudWatch agent is running
+                    def agentRunning = sh(script: 'sudo systemctl status amazon-cloudwatch-agent', returnStatus: true) == 0
+                    if (!agentRunning) {
+                        error "AWS CloudWatch agent is not running. Please check the agent configuration."
+                    }
+                    
+                    // Verify configuration
+                    def configFile = '/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json'
+                    def configExists = sh(script: 'test -f ${configFile}', returnStatus: true) == 0
+                    if (!configExists) {
+                        error "CloudWatch configuration file not found at ${configFile}. Please check the configuration."
+                    }
+                    
+                    echo "AWS CloudWatch Agent setup verified successfully."
+                }
             }
         }
     }
+
 
     post {
         always {
