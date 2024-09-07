@@ -98,8 +98,8 @@ pipeline {
                 sh 'curl --retry-delay 10 --retry 5 "http://44.204.149.52:8080/inventory-app"'
             }
         }
+    }
 
-    
     post {
         always {
             echo 'Cleaning up workspace'
