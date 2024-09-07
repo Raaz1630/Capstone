@@ -32,7 +32,7 @@
         <maven.compiler.target>17</maven.compiler.target>
 
         <!-- SonarQube properties -->
-        <sonar.host.url>http://3.84.236.52:9000</sonar.host.url>
+        <sonar.host.url>http://52.1.154.132:9000</sonar.host.url>
         <sonar.organization>Inventory.io</sonar.organization>
         <sonar.projectKey>Inventory.io</sonar.projectKey>
         <sonar.login>sqp_f4b676dc3c733891509af9a342d1b35e631e84be</sonar.login>
