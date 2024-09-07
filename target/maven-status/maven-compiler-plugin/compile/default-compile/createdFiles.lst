@@ -1,0 +1,10 @@
+com\example\inventory\entity\Product.class
+com\example\inventory\controller\OrderController.class
+com\example\inventory\InventoryManagementApplication.class
+com\example\inventory\service\ProductService.class
+com\example\inventory\repository\OrderRepository.class
+com\example\inventory\entity\Order.class
+com\example\inventory\controller\ProductController.class
+com\example\inventory\repository\ProductRepository.class
+com\example\inventory\service\OrderService.class
+com\example\inventory\ServletInitializer.class
