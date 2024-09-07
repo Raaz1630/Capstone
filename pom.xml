@@ -32,22 +32,22 @@
         <maven.compiler.target>17</maven.compiler.target>
 
         <!-- SonarQube properties -->
-        <sonar.host.url>http://54.147.9.24:9000</sonar.host.url>
+        <sonar.host.url>http://3.84.236.52:9000</sonar.host.url>
         <sonar.organization>Inventory.io</sonar.organization>
         <sonar.projectKey>Inventory.io</sonar.projectKey>
-        <sonar.login>sqp_eaa16bac94134f5893413a960f53b37b937429be</sonar.login>
+        <sonar.login>sqp_f4b676dc3c733891509af9a342d1b35e631e84be</sonar.login>
     </properties>
 
     <distributionManagement>
         <repository>
             <id>release</id>
             <name>inventory-libs-release-local</name>
-            <url>http://18.207.203.145:8082/artifactory/inventory-libs-release-local/</url>
+            <url>http://18.212.8.142:8082/artifactory/inventory-libs-release-local//</url>
         </repository>
         <snapshotRepository>
             <id>snapshots</id>
             <name>inventory-libs-snapshots-local</name>
-            <url>http://18.207.203.145:8082/artifactory/inventory-libs-snapshots-local/</url>
+            <url>http://18.212.8.142:8082/artifactory/inventory-libs-snapshots-local/</url>
         </snapshotRepository>
     </distributionManagement>
 
