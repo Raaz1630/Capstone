@@ -13,13 +13,14 @@ pipeline {
             }
         }
 
-   stage('Static Code Analysis Using SonarQube') {
+        stage('Static Code Analysis Using SonarQube') {
             steps {
                 withSonarQubeEnv('sonarqube-10.6') {
                     sh 'mvn clean verify sonar:sonar'
                 }      
             }
-         }
+        }
+
         stage('Stage-1 : Clean') { 
             steps {
                 sh 'mvn clean'
@@ -62,7 +63,7 @@ pipeline {
             }
         }
 
-        stage('Quality Gate Check') { // Conditional check for SonarQube quality gate
+        stage('Quality Gate Check') { 
             steps {
                 script {
                     timeout(time: 1, unit: 'MINUTES') {
@@ -75,13 +76,13 @@ pipeline {
             }
         }
 
-        stage('Stage-8 : Deploy an Artifact to Artifactory Manager i.e. Nexus/Jfrog') { 
+        stage('Deploy to Artifactory') { 
             steps {
                 sh 'mvn deploy'
             }
         }
 
-         stage('Deploy WAR to Tomcat') { 
+        stage('Deploy WAR to Tomcat') { 
             steps {
                 script {
                     def warFiles = findFiles(glob: 'target/*.war')
@@ -95,15 +96,15 @@ pipeline {
                     }
                 }
             }
-       
+        }
 
-        stage('Stage-10 : Smoke Test') { 
+        stage('Smoke Test') { 
             steps {
                 sh 'curl --retry-delay 10 --retry 5 "http://54.91.182.176:8080/cbapp"'
             }
         }
 
-        stage('AWS CloudWatch Setup') { // AWS CloudWatch setup
+        stage('AWS CloudWatch Setup') { 
             steps {
                 sh '''
                 # Install and configure AWS CloudWatch agent
