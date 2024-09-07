@@ -42,12 +42,12 @@
         <repository>
             <id>release</id>
             <name>inventory-libs-release-local</name>
-            <url>http://18.212.8.142:8082/artifactory/inventory-libs-release-local//</url>
+            <url>http://18.233.165.126:8082/artifactory/inventory-libs-release-local//</url>
         </repository>
         <snapshotRepository>
             <id>snapshots</id>
             <name>inventory-libs-snapshots-local</name>
-            <url>http://18.212.8.142:8082/artifactory/inventory-libs-snapshots-local/</url>
+            <url>http://18.233.165.126:8082/artifactory/inventory-libs-snapshots-local/</url>
         </snapshotRepository>
     </distributionManagement>
 
