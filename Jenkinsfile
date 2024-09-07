@@ -63,7 +63,7 @@ pipeline {
             }
         }
 
-        stage('Quality Gate Check') { 
+        stage('Quality Gate Check') { // Conditional check for SonarQube quality gate
             steps {
                 script {
                     timeout(time: 1, unit: 'MINUTES') {
@@ -76,52 +76,41 @@ pipeline {
             }
         }
 
-        stage('Deploy to Artifactory') { 
+        stage('Stage-8 : Deploy an Artifact to Artifactory Manager i.e. Nexus/Jfrog') { 
             steps {
                 sh 'mvn deploy'
             }
         }
 
-        stage('Deploy WAR to Tomcat') { 
+        stage('Stage-9 : Deploy WAR to Tomcat') { 
             steps {
                 script {
-                    def warFiles = findFiles(glob: 'target/*.war')
-                    if (warFiles.length > 0) {
-                        def warFile = warFiles[0].name
-                        sh """
-                        curl -u admin:redhat@123 -T target/${warFile} "http://44.204.149.52:8080/manager/text/deploy?path=/inventory&update=true"
-                        """
-                    } else {
-                        error "WAR file not found in target directory!"
-                    }
+                    def warFile = findFiles(glob: 'target/*.war')[0].name
+                    sh """
+                    curl -u admin:redhat@123 -T target/${warFile} "http://54.91.182.176:8080/manager/text/deploy?path=/inventory-app&update=true"
+                    """
                 }
             }
         }
 
-        stage('Smoke Test') { 
+        stage('Stage-10 : Smoke Test') { 
             steps {
-                sh 'curl --retry-delay 10 --retry 5 "http://44.204.149.52:8080/inventory-app"'
+                sh 'curl --retry-delay 10 --retry 5 "http://54.91.182.176:8080/cbapp"'
             }
         }
 
-        stage('AWS CloudWatch Setup') { 
+        stage('AWS CloudWatch Verification') { // Verification of AWS CloudWatch setup
             steps {
-                script {
-                    // Check if CloudWatch agent is running
-                    def agentRunning = sh(script: 'sudo systemctl status amazon-cloudwatch-agent', returnStatus: true) == 0
-                    if (!agentRunning) {
-                        error "AWS CloudWatch agent is not running. Please check the agent configuration."
-                    }
-                    
-                    // Verify configuration
-                    def configFile = '/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json'
-                    def configExists = sh(script: 'test -f ${configFile}', returnStatus: true) == 0
-                    if (!configExists) {
-                        error "CloudWatch configuration file not found at ${configFile}. Please check the configuration."
-                    }
-                    
-                    echo "AWS CloudWatch Agent setup verified successfully."
-                }
+                sh '''
+                # Check if CloudWatch agent is running
+                sudo systemctl status amazon-cloudwatch-agent
+                
+                # List log groups
+                aws logs describe-log-groups --region us-east-1
+                
+                # List metrics
+                aws cloudwatch list-metrics --region us-east-1
+                '''
             }
         }
     }
