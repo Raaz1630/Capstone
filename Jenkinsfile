@@ -81,16 +81,21 @@ pipeline {
             }
         }
 
-        stage('Stage-9 : Deploy WAR to Tomcat') { 
+         stage('Deploy WAR to Tomcat') { 
             steps {
                 script {
-                    def warFile = findFiles(glob: 'target/*.war')[0].name
-                    sh """
-                    curl -u admin:redhat@123 -T target/${warFile} "http://44.204.149.52:8080/manager/text/deploy?path=/inventory-app&update=true"
-                    """
+                    def warFiles = findFiles(glob: 'target/*.war')
+                    if (warFiles.length > 0) {
+                        def warFile = warFiles[0].name
+                        sh """
+                        curl -u admin:redhat@123 -T target/${warFile} "http://44.204.149.52:8080/manager/text/deploy?path=/inventory-app&update=true"
+                        """
+                    } else {
+                        error "WAR file not found in target directory!"
+                    }
                 }
             }
-        }
+       
 
         stage('Stage-10 : Smoke Test') { 
             steps {
