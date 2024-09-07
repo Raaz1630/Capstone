@@ -5,7 +5,7 @@ pipeline {
         maven 'Maven'
         jdk 'Java-17'
     }
-  
+
     stages {
         stage('Checkout') {
             steps {
@@ -89,7 +89,7 @@ pipeline {
                     if (warFiles.length > 0) {
                         def warFile = warFiles[0].name
                         sh """
-                        curl -u admin:redhat@123 -T target/${warFile} "http://44.204.149.52:8080/manager/text/deploy?path=/inventory-app&update=true"
+                        curl -u admin:redhat@123 -T target/${warFile} "http://44.204.149.52:8080/manager/text/deploy?path=/inventory&update=true"
                         """
                     } else {
                         error "WAR file not found in target directory!"
@@ -125,21 +125,6 @@ pipeline {
             }
         }
     }
-
-    post {
-        always {
-            echo 'Cleaning up workspace'
-            cleanWs()
-        }
-        success {
-            echo 'Pipeline completed successfully!'
-        }
-        failure {
-            echo 'Pipeline failed. Check logs for details.'
-        }
-    }
-}
-
 
     post {
         always {
