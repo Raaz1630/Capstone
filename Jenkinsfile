@@ -87,7 +87,7 @@ pipeline {
                 script {
                     def warFile = findFiles(glob: 'target/*.war')[0].name
                     sh """
-                    curl -u admin:redhat@123 -T target/${warFile} "http://54.91.182.176:8080/manager/text/deploy?path=/inventory-app&update=true"
+                    curl -u admin:redhat@123 -T target/${warFile} "http://44.204.149.52:8080/manager/text/deploy?path=/inventory-app&update=true"
                     """
                 }
             }
@@ -95,7 +95,7 @@ pipeline {
 
         stage('Stage-10 : Smoke Test') { 
             steps {
-                sh 'curl --retry-delay 10 --retry 5 "http://54.91.182.176:8080/cbapp"'
+                sh 'curl --retry-delay 10 --retry 5 "http://44.204.149.52:8080/inventory-app"'
             }
         }
 
