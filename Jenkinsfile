@@ -103,7 +103,7 @@ pipeline {
             steps {
                 sh '''
                 # Check if CloudWatch agent is running
-                sudo systemctl status amazon-cloudwatch-agent
+                systemctl status amazon-cloudwatch-agent
                 
                 # List log groups
                 aws logs describe-log-groups --region us-east-1
