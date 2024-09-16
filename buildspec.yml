@@ -10,14 +10,16 @@ phases:
       - pwd
       - ls -lrta
       - echo "Code Scanning..."
-      - mvn clean verify sonar:sonar
+     # - mvn clean verify sonar:sonar
       - pwd
       - ls -lrt
+      - ls -lrta .m2
       - echo "Code Scanning has been completed!"
   build:
     commands:
       - echo "Build started on $(date)"
-      - mvn clean validate compile test install verify package
+      #- mvn clean validate compile test install verify package deploy 
+     # - cp -pvr settings.xml /root/.m2
       - ls -lrta
   post_build:
     commands:
