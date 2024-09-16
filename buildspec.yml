@@ -15,7 +15,7 @@ phases:
       - pwd
       - ls -lrta
       - echo "Code Scanning..."
-      #- mvn clean verify sonar:sonar
+      - mvn clean verify sonar:sonar
       - pwd
       - ls -lrt
       - ls -lrta /root/.m2/
@@ -27,6 +27,7 @@ phases:
       - echo "Build started on $(date)"
      # - mvn clean validate compile test install verify package 
       - mvn package
+      - mvn deploy
       - ls -lrta
       - apt update
       - apt install curl -y
