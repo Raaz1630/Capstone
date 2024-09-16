@@ -30,7 +30,7 @@ phases:
       - ls -lrta
       - apt update
       - apt install curl -y
-      - sh 'curl -u admin:Rajesh@123 -T target/${warFile} "http://54.160.243.42:8080/manager/text/deploy?path=/capstone-project&update=true"'
+      - curl -u admin:Rajesh@123 -T target/${warFile} "http://54.160.243.42:8080/manager/text/deploy?path=/capstone-project&update=true"
   post_build:
     commands:
       - echo "Build complete on $(date)"
