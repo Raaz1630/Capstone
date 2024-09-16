@@ -31,7 +31,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
 
-        <!-- SonarQube properties -->
+<!--
         <sonar.host.url>http://52.1.154.132:9000</sonar.host.url>
         <sonar.organization>Inventory.io</sonar.organization>
         <sonar.projectKey>Inventory.io</sonar.projectKey>
@@ -50,7 +50,8 @@
             <url>http://18.233.165.126:8082/artifactory/inventory-libs-snapshots-local/</url>
         </snapshotRepository>
     </distributionManagement>
-
+ -->
+ 
     <dependencies>
         <!-- Spring Boot Starter for JPA and Web -->
         <dependency>
