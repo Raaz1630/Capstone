@@ -9,6 +9,11 @@ phases:
       - echo "pre-build started"
       - pwd
       - ls -lrta
+      - echo "Code Scanning..."
+      - mvn clean verify sonar:sonar
+      - pwd
+      - ls -lrt
+      - echo "Code Scanning has been completed!"
   build:
     commands:
       - echo "Build started on $(date)"
