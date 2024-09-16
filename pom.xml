@@ -31,7 +31,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
 
-
+             
         <sonar.host.url>http://52.23.211.241:9000</sonar.host.url>
         <sonar.organization>Inventory.io</sonar.organization>
         <sonar.projectKey>Inventory.io</sonar.projectKey>
