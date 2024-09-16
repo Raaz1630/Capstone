@@ -14,7 +14,7 @@ phases:
       - mvn clean
       - pwd
       - ls -lrt
-      - ls -lrta .m2
+      - ls -lrta /root/.m2/
       - echo "Code Scanning has been completed!"
   build:
     commands:
