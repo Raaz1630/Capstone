@@ -11,12 +11,12 @@ phases:
       - ls -lrta
   build:
     commands:
-      - echo Build started on 'date'
+      - echo "Build started on $(date)"
       - mvn clean validate compile test install verify package
       - ls -lrta
   post_build:
     commands:
-      - echo Build cpmplete on 'date'
+      - echo "Build complete on $(date)"
 artifacts:
   files:
     - '**/*'
