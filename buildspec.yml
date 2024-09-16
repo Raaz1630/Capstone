@@ -4,7 +4,7 @@ phases:
   install:
     runtime-versions:
       java: corretto17
-     commands:
+    commands:
       - echo "Installing AWS CLI"
       - pip install awscli
   pre_build:
@@ -15,7 +15,6 @@ phases:
       - pwd
       - ls -lrta
       - echo "Code Scanning..."
-     # - mvn clean verify sonar:sonar
       - mvn clean
       - pwd
       - ls -lrt
