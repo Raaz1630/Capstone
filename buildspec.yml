@@ -11,6 +11,7 @@ phases:
       - ls -lrta
       - echo "Code Scanning..."
      # - mvn clean verify sonar:sonar
+      - mvn clean
       - pwd
       - ls -lrt
       - ls -lrta .m2
