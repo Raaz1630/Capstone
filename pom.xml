@@ -31,27 +31,32 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
 
-             
+        <!-- SonarQube properties -->
         <sonar.host.url>http://52.23.211.241:9000</sonar.host.url>
         <sonar.organization>Inventory.io</sonar.organization>
         <sonar.projectKey>Inventory.io</sonar.projectKey>
         <sonar.login>sqp_5e6bf93ee8c5bc90bb8d200a87175084f1c0ffa5</sonar.login>
     </properties>
-<!--
+
+<!-- 
     <distributionManagement>
         <repository>
-            <id>release</id>
-            <name>inventory-libs-release-local</name>
-            <url>http://18.233.165.126:8082/artifactory/inventory-libs-release-local//</url>
+            <id>codeartifact-repo</id>
+          <name>CodeArtifact Repository</name>
+          <url>https://capstone-730335265678.d.codeartifact.us-east-1.amazonaws.com/maven/capstone_project/</url>
         </repository>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>inventory-libs-snapshots-local</name>
-            <url>http://18.233.165.126:8082/artifactory/inventory-libs-snapshots-local/</url>
-        </snapshotRepository>
     </distributionManagement>
- -->
- 
+  -->  
+
+    <distributionManagement>
+        <repository>
+            <id>capstone-capstone_project</id>
+          <name>capstone-capstone_project</name>
+          <url>https://capstone-730335265678.d.codeartifact.us-east-1.amazonaws.com/maven/capstone_project/</url>
+         </repository>
+    </distributionManagement>
+
+
     <dependencies>
         <!-- Spring Boot Starter for JPA and Web -->
         <dependency>
