@@ -31,13 +31,13 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
 
-<!--
-        <sonar.host.url>http://52.1.154.132:9000</sonar.host.url>
+
+        <sonar.host.url>http://52.23.211.241:9000</sonar.host.url>
         <sonar.organization>Inventory.io</sonar.organization>
         <sonar.projectKey>Inventory.io</sonar.projectKey>
-        <sonar.login>sqp_f4b676dc3c733891509af9a342d1b35e631e84be</sonar.login>
+        <sonar.login>sqp_5e6bf93ee8c5bc90bb8d200a87175084f1c0ffa5</sonar.login>
     </properties>
-
+<!--
     <distributionManagement>
         <repository>
             <id>release</id>
