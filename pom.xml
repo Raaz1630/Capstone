@@ -1,131 +1,135 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.3</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
-
-    <groupId>com.example</groupId>
-    <artifactId>inventory</artifactId>
+    <groupId>com.aws.codestar.projecttemplates</groupId>
+    <artifactId>cloudbinary</artifactId>
     <version>3.3.6</version>
+    <!--<version>9.10.3-SNAPSHOT</version>-->
     <packaging>war</packaging>
-
-    <name>Inventory_Management</name>
-    <description>Spring Boot Inventory Management Project</description>
+    <name>Cloud Binary - Sample Spring MVC Application</name>
 
     <properties>
-        <!-- Java version -->
-        <java.version>17</java.version>
+        <junit.platform.version>1.2.0</junit.platform.version>
+        <junit.jupiter.version>5.2.0</junit.jupiter.version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
 
-        <!-- JUnit versions -->
-        <junit.jupiter.version>5.10.0</junit.jupiter.version> <!-- Updated JUnit version -->
-        <junit.platform.version>1.10.0</junit.platform.version>
+        <sonar.host.url>http://54.152.205.68:9000</sonar.host.url>
+        <sonar.organization>cloudbinaryio</sonar.organization>
+        <sonar.projectKey>cloudbinaryio</sonar.projectKey>
+        <sonar.login>sqp_ee60244f58bb57abe4bccfbcf177a686037bf14a</sonar.login>
 
-        <!-- Maven Compiler settings -->
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
 
-        <!-- SonarQube properties -->
-        <sonar.host.url>http://52.23.211.241:9000</sonar.host.url>
-        <sonar.organization>Inventory.io</sonar.organization>
-        <sonar.projectKey>Inventory.io</sonar.projectKey>
-        <sonar.login>sqp_5e6bf93ee8c5bc90bb8d200a87175084f1c0ffa5</sonar.login>
     </properties>
 
-<!-- 
-    <distributionManagement>
-        <repository>
-            <id>codeartifact-repo</id>
-          <name>CodeArtifact Repository</name>
-          <url>https://capstone-730335265678.d.codeartifact.us-east-1.amazonaws.com/maven/capstone_project/</url>
-        </repository>
-    </distributionManagement>
-  -->  
+       
+<distributionManagement>
 
-    <distributionManagement>
-        <repository>
-            <id>capstone-capstone_project</id>
-          <name>capstone-capstone_project</name>
-          <url>https://capstone-730335265678.d.codeartifact.us-east-1.amazonaws.com/maven/capstone_project/</url>
-         </repository>
-    </distributionManagement>
+    <repository>
+        <id>release</id>
+        <name>cb-libs-release-local</name>
+        <url>http://54.144.102.195:8082/artifactory/cb-libs-release-local/</url>
+    </repository>
 
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>cb-libs-snapshots-local</name>
+        <url>http://54.144.102.195:8082/artifactory/cb-libs-snapshots-local/</url>
+    </snapshotRepository>
 
+</distributionManagement>
+
+    
     <dependencies>
-        <!-- Spring Boot Starter for JPA and Web -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>5.0.7.RELEASE</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>5.0.7.RELEASE</version>
         </dependency>
-
-        <!-- Development Tools -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>5.0.7.RELEASE</version>
         </dependency>
-
-        <!-- H2 Database for Testing -->
         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>5.0.7.RELEASE</version>
         </dependency>
-
-        <!-- PostgreSQL for Production Database -->
         <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-
-        <!-- Jakarta Persistence API -->
-        <dependency>
-            <groupId>jakarta.persistence</groupId>
-            <artifactId>jakarta.persistence-api</artifactId>
-            <version>3.1.0</version>
-        </dependency>
-
-        <!-- Hibernate ORM (optional) -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>6.2.1.Final</version>
-        </dependency>
-
-        <!-- Tomcat as Provided Scope for WAR packaging -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
             <scope>provided</scope>
         </dependency>
-
-        <!-- Testing Dependencies -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.3.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-launcher</artifactId>
+            <version>${junit.platform.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-runner</artifactId>
+            <version>${junit.platform.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>3.2.2</version>
+                    <configuration>
+                        <warSourceDirectory>src/main/webapp</warSourceDirectory>
+                        <warName>devops</warName>
+                        <failOnMissingWebXml>false</failOnMissingWebXml>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.22.0</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.junit.platform</groupId>
+                            <artifactId>junit-platform-surefire-provider</artifactId>
+                            <version>${junit.platform.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.junit.jupiter</groupId>
+                            <artifactId>junit-jupiter-engine</artifactId>
+                            <version>${junit.jupiter.version}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <finalName>devops</finalName>
     </build>
-
 </project>
