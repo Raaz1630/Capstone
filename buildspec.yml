@@ -17,19 +17,19 @@ phases:
       - echo "Code Scanning..."
       - mvn clean verify sonar:sonar
       - pwd
-    # - ls -lrt
-    # - ls -lrta /root/.m2/
-    # - cp -pvr settings.xml /root/.m2/
-    #  - ls -lrta /root/.m2/
+      - ls -lrt
+      - ls -lrta /root/.m2/
+      - cp -pvr settings.xml /root/.m2/
+      - ls -lrta /root/.m2/
       - echo "Code Scanning has been completed!"
   build:
     commands:
-     # - echo "Build started on $(date)"
-     # - mvn clean validate compile test install verify package 
-     # - ls -lrta
-     # - apt update
-     # - apt install curl -y
-     # - curl -u admin:Rajesh@123 -T target/${warFile} "http://54.225.11.152:8080/manager/text/deploy?path=/capstone-project&update=true"
+      - echo "Build started on $(date)"
+      - mvn clean validate compile test install verify package 
+      - ls -lrta
+      - apt update
+      - apt install curl -y
+      - curl -u admin:Rajesh@123 -T target/${warFile} "http://54.225.11.152:8080/manager/text/deploy?path=/capstone-project&update=true"
   post_build:
     commands:
       - echo "Build complete on $(date)"
