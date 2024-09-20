@@ -21,7 +21,7 @@
 
 
     </properties>
-       
+<!--       
 <distributionManagement>
   <repository>
     <id>capstone-capstone_project</id>
@@ -29,7 +29,7 @@
     <url>https://capstone-730335265678.d.codeartifact.us-east-1.amazonaws.com/maven/capstone_project/</url>
   </repository>
 </distributionManagement>
-
+-->
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
