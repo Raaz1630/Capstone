@@ -1,6 +1,6 @@
 version: 0.2
 
-phases:https://github.com/Raaz1630/Capstone/edit/main/buildspec.yml
+phases:
   install:
     runtime-versions:
       java: corretto17
