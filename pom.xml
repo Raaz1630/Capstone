@@ -21,24 +21,22 @@
 
 
     </properties>
-
-<!--       
+       
 <distributionManagement>
 
     <repository>
         <id>release</id>
-        <name>cb-libs-release-local</name>
-        <url>http://54.144.102.195:8082/artifactory/cb-libs-release-local/</url>
+        <name>capstone-libs-release-local</name>
+        <url>http://100.26.107.198:8082/artifactory/capstone-libs-release-local/</url>
     </repository>
 
     <snapshotRepository>
         <id>snapshots</id>
-        <name>cb-libs-snapshots-local</name>
-        <url>http://54.144.102.195:8082/artifactory/cb-libs-snapshots-local/</url>
+        <name>capstone-libs-snapshots-local</name>
+        <url>http://100.26.107.198:8082/artifactory/capstone-libs-snapshots-local/</url>
     </snapshotRepository>
 
 </distributionManagement>
--->
     
     <dependencies>
         <dependency>
