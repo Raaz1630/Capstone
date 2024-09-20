@@ -1,29 +1,40 @@
-<settings xmlns="http://maven.apache.org/SETTINGS/1.2.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 http://maven.apache.org/xsd/settings-1.2.0.xsd">
-  
-  <servers>
-    <server>
-      <id>codeartifact-repo</id>
-      <username>aws</username>
-      <password>${env.CODEARTIFACT_AUTH_TOKEN}</password>
-    </server>
-  </servers>
-
-  <profiles>
-    <profile>
-      <id>default</id>
-      <repositories>
-        <repository>
-          <id>codeartifact-repo</id>
-          <name>CodeArtifact Repository</name>
-          <url>https://capstone-730335265678.d.codeartifact.us-east-1.amazonaws.com/maven/capstone_project/</url>
-        </repository>
-      </repositories>
-    </profile>
-  </profiles>
-
-  <activeProfiles>
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 http://maven.apache.org/xsd/settings-1.2.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.2.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<servers>
+  <server>
+     <username>admin</username>
+     <password>Rajesh@123</password>
+     <id>release</id>
+  </server>
+  <server>
+    <username>admin</username>
+    <password>Rajesh@123</password>
+    <id>snapshots</id>
+   </server>
+ </servers>
+ <profiles>
+  <profile>
+    <repositories>
+      <repository>
+        <snapshots>
+          <enabled>true</enabled>
+        </snapshots>
+        <id>release</id>
+        <name>capstone-libs-release-local</name>
+        <url>http://100.26.107.198:8082/artifactory/capstone-libs-release-local/</url>
+      </repository>
+      <repository>
+        <snapshots />
+        <id>snapshots</id>
+        <name>capstone-libs-snapshots-local</name>
+        <url>http://100.26.107.198:8082/artifactory/capstone-libs-snapshots-local/</url>
+      </repository>
+    </repositories>
+    <id>default</id>
+  </profile>
+</profiles>
+<activeProfiles>
     <activeProfile>default</activeProfile>
   </activeProfiles>
 </settings>
