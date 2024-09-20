@@ -15,9 +15,9 @@
         <maven.compiler.target>11</maven.compiler.target>
 
         <sonar.host.url>http://54.89.137.66:9000</sonar.host.url>
-        <sonar.organization>cloudbinaryio</sonar.organization>
-        <sonar.projectKey>cloudbinaryio</sonar.projectKey>
-        <sonar.login>sqp_ee60244f58bb57abe4bccfbcf177a686037bf14a</sonar.login>
+        <sonar.organization>Capstone</sonar.organization>
+        <sonar.projectKey>Capstone</sonar.projectKey>
+        <sonar.login>sqp_831f1c44c9b977596a5b05e85d6e305986874074</sonar.login>
     </properties>
 <!--       
 <distributionManagement>
