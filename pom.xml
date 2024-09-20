@@ -2,7 +2,7 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.aws.codestar.projecttemplates</groupId>
-    <artifactId>cloudbinary</artifactId>
+    <artifactId>capstone</artifactId>
     <version>3.3.6</version>
     <!--<version>9.10.3-SNAPSHOT</version>-->
     <packaging>war</packaging>
