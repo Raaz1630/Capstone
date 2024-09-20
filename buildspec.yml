@@ -5,9 +5,8 @@ phases:
     runtime-versions:
       java: corretto17
       commands:
-      - yum clean all
-      - yum update -y
-      - yum install -y curl
+      - apt update -y
+      - apt install -y curl
 
   pre_build:
     commands:
