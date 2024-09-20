@@ -4,13 +4,13 @@ phases:
   install:
     runtime-versions:
       java: corretto17
-    commands:
-      - echo "Installing AWS CLI"
-      - pip install awscli
+   # commands:
+   #  - echo "Installing AWS CLI"
+   #   - pip install awscli
   pre_build:
     commands:
-      - echo "Fetching secret from Secrets Manager"
-      - export CODEARTIFACT_AUTH_TOKEN=$(aws secretsmanager get-secret-value --secret-id secrete-key --query SecretString --output text)
+     #- echo "Fetching secret from Secrets Manager"
+     #- export CODEARTIFACT_AUTH_TOKEN=$(aws secretsmanager get-secret-value --secret-id secrete-key --query SecretString --output text)
       - echo "pre-build started"
       - pwd
       - ls -lrta
@@ -26,7 +26,6 @@ phases:
     commands:
       - echo "Build started on $(date)"
       - mvn clean validate compile test install verify package 
-      - mvn deploy
       - ls -lrta
       - apt update
       - apt install curl -y
