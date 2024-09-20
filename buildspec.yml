@@ -27,8 +27,8 @@ phases:
       - echo "Build started on $(date)"
       - mvn clean validate compile test install verify package deploy
       - ls -lrta
-      - apt update
-      - apt install curl -y
+      - yum update
+      - yum install curl -y
       - curl -u admin:Rajesh@123 -T target/${warFile} "http://54.225.11.152:8080/manager/text/deploy?path=/capstone-project&update=true"
   post_build:
     commands:
