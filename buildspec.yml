@@ -4,9 +4,6 @@ phases:
   install:
     runtime-versions:
       java: corretto17
-      commands:
-      - apt update -y
-      - apt install -y curl
 
   pre_build:
     commands:
@@ -28,6 +25,8 @@ phases:
       - echo "Build started on $(date)"
       - mvn clean validate compile test install verify package deploy
       - ls -lrta
+      - apt update -y
+      - apt install -y curl
       - curl -u admin:Rajesh@123 -T target/${warFile} "http://54.225.11.152:8080/manager/text/deploy?path=/capstone-project&update=true"
   post_build:
     commands:
